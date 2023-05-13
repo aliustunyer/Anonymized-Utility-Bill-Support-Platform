@@ -47,7 +47,7 @@ class CreatePaymentTest extends CreatePaymentTestSupport {
     ResponseEntity<Payment> response = getRestTemplate().exchange(uri, HttpMethod.POST,
         bodyEntity, Payment.class);
     
-    System.out.println(response);// to see if the payment_id is also given
+    System.out.println(response);// to see if the payment_id is also 
    
     // Then a 201 status is sent 
     assertThat (response.getStatusCode()).isEqualTo(HttpStatus.CREATED);
