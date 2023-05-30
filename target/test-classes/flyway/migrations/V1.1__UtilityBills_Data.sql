@@ -39,8 +39,14 @@ INSERT INTO payments (payment_date, donor_id, bill_id, beneficiary_id) VALUES ('
 INSERT INTO payments (payment_date, donor_id, bill_id, beneficiary_id) VALUES ('2023-05-31', 4, 6, 6);
 INSERT INTO payments (payment_date, donor_id, bill_id, beneficiary_id) VALUES ('2023-06-09', 5, 7, 7);
 
-INSERT INTO donor_beneficiary (donor_id, beneficiary_id) VALUES (1, 1); -- donor 1 paid for beneficiary 1
-INSERT INTO donor_beneficiary (donor_id, beneficiary_id) VALUES (2, 2); -- donor 2 paid for beneficiary 2
-INSERT INTO donor_beneficiary (donor_id, beneficiary_id) VALUES (3, 3); -- donor 3 paid for beneficiary 3
-INSERT INTO donor_beneficiary (donor_id, beneficiary_id) VALUES (4, 6); -- donor 4 paid for beneficiary 6
-INSERT INTO donor_beneficiary (donor_id, beneficiary_id) VALUES (5, 7); -- donor 5 paid for beneficiary 7
+INSERT INTO donations (donor_id, amount_donated, donation_date) VALUES
+(1, 100.00, '2023-01-01'),
+(2, 150.00, '2023-01-15'),
+(3, 200.00, '2023-01-20'),
+(4, 250.00, '2023-01-25'),
+(5, 300.00, '2023-02-01'),
+(6, 350.00, '2023-02-15'),
+(7, 400.00, '2023-02-20'),
+(8, 450.00, '2023-02-25'),
+(9, 500.00, '2023-03-01'),
+(10, 550.00, '2023-03-15');
