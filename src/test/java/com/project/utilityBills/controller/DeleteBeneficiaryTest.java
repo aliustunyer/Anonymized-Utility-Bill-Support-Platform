@@ -1,15 +1,11 @@
 package com.project.utilityBills.controller;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import com.project.utilityBills.controller.support.DeleteBeneficiaryTestSupport;
-import com.project.utilityBills.entity.Beneficiary;
-import static org.junit.jupiter.api.Assertions.*;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
-import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,10 +13,11 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.jdbc.SqlConfig;
-import org.springframework.test.jdbc.JdbcTestUtils;
+import com.project.utilityBills.controller.support.DeleteBeneficiaryTestSupport;
 
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
 @ActiveProfiles("test")
+@AutoConfigureTestDatabase
 @Sql(scripts = {
     "classpath:flyway/migrations/V1.0__UtilityBills_Schema.sql",
     "classpath:flyway/migrations/V1.1__UtilityBills_Data.sql"}, 
