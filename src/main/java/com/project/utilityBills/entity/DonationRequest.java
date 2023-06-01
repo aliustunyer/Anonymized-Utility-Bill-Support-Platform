@@ -13,7 +13,7 @@ import lombok.Data;
 public class DonationRequest {
 
   @NotNull(message = "Donor ID cannot be null")
-  private Integer donorId;
+  private Integer donor_id;
   
   @NotNull(message = "Donation amount cannot be null")
   @DecimalMin(value = "0.0", inclusive = false, message = "Donation amount must be greater than 0")
