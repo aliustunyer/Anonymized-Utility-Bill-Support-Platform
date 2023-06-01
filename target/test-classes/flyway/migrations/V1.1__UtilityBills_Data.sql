@@ -33,11 +33,11 @@ INSERT INTO utility_bills (beneficiary_id, utility_type, amount_due, due_date, i
 INSERT INTO utility_bills (beneficiary_id, utility_type, amount_due, due_date, is_paid) VALUES (5, 'natural_gas', 45.00, '2023-06-28', 0);
 INSERT INTO utility_bills (beneficiary_id, utility_type, amount_due, due_date, is_paid) VALUES (6, 'electricity', 120.00, '2023-06-05', 0);
 
-INSERT INTO payments (payment_date, donor_id, bill_id, beneficiary_id) VALUES ('2023-04-30', 1, 1, 1);
-INSERT INTO payments (payment_date, donor_id, bill_id, beneficiary_id) VALUES ('2023-05-09', 2, 2, 2);
-INSERT INTO payments (payment_date, donor_id, bill_id, beneficiary_id) VALUES ('2023-05-14', 3, 3, 3);
-INSERT INTO payments (payment_date, donor_id, bill_id, beneficiary_id) VALUES ('2023-05-31', 4, 6, 6);
-INSERT INTO payments (payment_date, donor_id, bill_id, beneficiary_id) VALUES ('2023-06-09', 5, 7, 7);
+INSERT INTO payments (payment_date, donor_id, bill_id, beneficiary_id, payment_type) VALUES ('2023-04-30', 1, 1, 1, 'DIRECT');
+INSERT INTO payments (payment_date, donor_id, bill_id, beneficiary_id, payment_type) VALUES ('2023-05-09', 2, 2, 2, 'DIRECT');
+INSERT INTO payments (payment_date, donor_id, bill_id, beneficiary_id, payment_type) VALUES ('2023-05-14', 3, 3, 3, 'DIRECT');
+INSERT INTO payments (payment_date, donor_id, bill_id, beneficiary_id, payment_type) VALUES ('2023-05-31', 4, 6, 6, 'DIRECT');
+INSERT INTO payments (payment_date, donor_id, bill_id, beneficiary_id, payment_type) VALUES ('2023-06-09', 5, 7, 7, 'DIRECT');
 
 INSERT INTO donations (donor_id, amount_donated, donation_date) VALUES
 (1, 100.00, '2023-01-01'),

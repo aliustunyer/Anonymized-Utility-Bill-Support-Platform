@@ -18,6 +18,7 @@ import org.springframework.test.context.jdbc.SqlConfig;
 import com.project.utilityBills.controller.support.CreatePaymentTestSupport;
 import com.project.utilityBills.dao.PaymentsDao;
 import com.project.utilityBills.entity.Payment;
+import com.project.utilityBills.entity.PaymentType;
 import com.project.utilityBills.entity.UtilityBills;
 
 
@@ -56,10 +57,13 @@ class CreatePaymentTest extends CreatePaymentTestSupport {
     assertThat(response.getBody()).isNotNull();
     
     Payment payment = response.getBody();
+    
+    
     assertThat(payment.getPayment_date()).isEqualTo("2023-06-10");   
     assertThat(payment.getDonor().getDonor_id()).isEqualTo(6);
     assertThat(payment.getUtilityBills().getBillId()).isEqualTo(8);
     assertThat(payment.getBeneficiary().getBeneficiary_id()).isEqualTo(8);
+    assertThat(payment.getPaymentType()).isEqualTo(PaymentType.DIRECT);
 
      // Fetch the utility bill after the payment is made
      UtilityBills fetchedBill = paymentsDao.fetchUtilityBills(payment.getUtilityBills().getBillId()).orElse(null);

@@ -10,6 +10,7 @@ import com.project.utilityBills.entity.Beneficiary;
 import com.project.utilityBills.entity.Donor;
 import com.project.utilityBills.entity.Payment;
 import com.project.utilityBills.entity.PaymentRequest;
+import com.project.utilityBills.entity.PaymentType;
 import com.project.utilityBills.entity.UtilityBills;
 import com.project.utilityBills.errorhandler.BillAlreadyPaidException;
 
@@ -30,8 +31,10 @@ public class BasicPaymentsService implements PaymentsService {
     
     UtilityBills utilityBills = getUtilityBills(paymentRequest);
     
+    PaymentType paymentType = paymentRequest.getPaymentType();
+    
    if (!utilityBills.isPaid()) { // if the bill is not paid
-     return paymentsDao.savePayment(payment_date, donor, beneficiary, utilityBills);
+     return paymentsDao.savePayment(payment_date, donor, beneficiary, utilityBills, paymentType);
     
   }
   else {

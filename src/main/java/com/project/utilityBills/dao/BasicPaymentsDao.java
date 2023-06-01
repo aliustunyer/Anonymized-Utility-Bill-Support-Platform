@@ -17,6 +17,7 @@ import org.springframework.stereotype.Component;
 import com.project.utilityBills.entity.Beneficiary;
 import com.project.utilityBills.entity.Donor;
 import com.project.utilityBills.entity.Payment;
+import com.project.utilityBills.entity.PaymentType;
 import com.project.utilityBills.entity.UtilityBills;
 import com.project.utilityBills.entity.UtilityType;
 
@@ -127,10 +128,10 @@ public Optional<Donor> fetchDonor(int donor_id) {
             }
      @Override
      public Payment savePayment(LocalDate payment_date, Donor donor, 
-         Beneficiary beneficiary,UtilityBills utilityBills) {
+         Beneficiary beneficiary,UtilityBills utilityBills, PaymentType paymentType) {
            
          SqlParams params = 
-             generateInsertSql(payment_date, donor, beneficiary, utilityBills);
+             generateInsertSql(payment_date, donor, beneficiary, utilityBills, paymentType);
          
          
         
@@ -148,28 +149,29 @@ public Optional<Donor> fetchDonor(int donor_id) {
              .donor(donor)
              .utilityBills (utilityBills)
              .beneficiary(beneficiary)
+             .paymentType(paymentType)
              .build();
          //formatter :on
             }
-     private SqlParams generateInsertSql(LocalDate payment_date, Donor donor,
-        Beneficiary beneficiary, UtilityBills utilityBills) {
-      //formatter : off
+     private SqlParams generateInsertSql(LocalDate payment_date, Donor donor, Beneficiary beneficiary, UtilityBills utilityBills, PaymentType paymentType) {
+       //formatter : off
        String sql = ""
            + "INSERT INTO payments ("
-           + "payment_date, donor_id, beneficiary_id, bill_id"
+           + "payment_date, donor_id, beneficiary_id, bill_id, payment_type"
            + ") VALUES ("
-           + ":payment_date, :donor_id, :beneficiary_id, :bill_id"
+           + ":payment_date, :donor_id, :beneficiary_id, :bill_id, :payment_type"
            + ")";
        //formatter : on
-      SqlParams params = new SqlParams();
-      params.sql = sql;
-      params.source.addValue("payment_date", payment_date);
-      params.source.addValue("donor_id", donor.getDonor_id());
-      params.source.addValue("beneficiary_id", beneficiary.getBeneficiary_id());
-      params.source.addValue("bill_id", utilityBills.getBillId());
-      
-      return params; 
-    }
+       SqlParams params = new SqlParams();
+       params.sql = sql;
+       params.source.addValue("payment_date", payment_date);
+       params.source.addValue("donor_id", donor.getDonor_id());
+       params.source.addValue("beneficiary_id", beneficiary.getBeneficiary_id());
+       params.source.addValue("bill_id", utilityBills.getBillId());
+       params.source.addValue("payment_type", paymentType.toString()); // Added new line
+
+       return params; 
+   }
      
      private void updateUtilityBillAsPaid(UtilityBills utilityBills) {
        String sql = "UPDATE utility_bills SET is_paid = :is_paid WHERE bill_id = :bill_id";

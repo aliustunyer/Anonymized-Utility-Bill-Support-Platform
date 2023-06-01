@@ -5,7 +5,7 @@ import java.util.Optional;
 import com.project.utilityBills.entity.Beneficiary;
 import com.project.utilityBills.entity.Donor;
 import com.project.utilityBills.entity.Payment;
-
+import com.project.utilityBills.entity.PaymentType;
 import com.project.utilityBills.entity.UtilityBills;
 
 public interface PaymentsDao {
@@ -17,6 +17,6 @@ public interface PaymentsDao {
   Optional<UtilityBills> fetchUtilityBills(int bill_id);
 
   Payment savePayment(LocalDate payment_date, Donor donor, Beneficiary beneficiary,
-      UtilityBills utilityBills);
+      UtilityBills utilityBills, PaymentType paymentType);
 
 }
