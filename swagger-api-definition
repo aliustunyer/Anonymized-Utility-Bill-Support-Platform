@@ -1,0 +1,734 @@
+{
+    "openapi": "3.0.1",
+    "info": {
+        "title": "Create Beneficiary Service"
+    },
+    "servers": [
+        {
+            "url": "http://localhost:8080",
+            "description": "Local server."
+        }
+    ],
+    "paths": {
+        "/Beneficiary/{beneficiary_Id}": {
+            "put": {
+                "tags": [
+                    "basic-update-beneficiary-controller"
+                ],
+                "summary": "Update a beneficiary",
+                "description": "Returns the updated beneficiary",
+                "operationId": "updateBeneficiary",
+                "parameters": [
+                    {
+                        "name": "beneficiary_Id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Beneficiary"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Updated Beneficiary is returned",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Beneficiary"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "The request parameters are invalid",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "404": {
+                        "description": "A Beneficiary component was not found with the input criteria",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "500": {
+                        "description": "An unplanned error occurred",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/Payments": {
+            "post": {
+                "tags": [
+                    "basic-payments-controller"
+                ],
+                "summary": "Create a payment",
+                "description": "Returns the created payment",
+                "operationId": "createPayment",
+                "parameters": [
+                    {
+                        "name": "paymentRequest",
+                        "in": "query",
+                        "description": "The Payment Request as JSON",
+                        "required": true
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/PaymentRequest"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "201": {
+                        "description": "The created payment is returned",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Payment"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "The request parameters are invalid",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "404": {
+                        "description": "A Payment component was not found with the input criteria",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "500": {
+                        "description": "An unplanned error occured",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/Donor": {
+            "post": {
+                "tags": [
+                    "basic-create-donor-controller"
+                ],
+                "summary": "Create a donor",
+                "description": "Returns the created donor",
+                "operationId": "createDonor",
+                "parameters": [
+                    {
+                        "name": "donorRequest",
+                        "in": "query",
+                        "description": "The New Donor Request as JSON",
+                        "required": true
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/DonorRequest"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "201": {
+                        "description": "New Donor is returned",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Donor"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "The request parameters are invalid",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "404": {
+                        "description": "A Donor component was not found with the input criteria",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "500": {
+                        "description": "An unplanned error occured",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/Donations": {
+            "post": {
+                "tags": [
+                    "basic-create-donation-controller"
+                ],
+                "summary": "Create a donation",
+                "description": "Returns the created donation",
+                "operationId": "createDonation",
+                "parameters": [
+                    {
+                        "name": "donationRequest",
+                        "in": "query",
+                        "description": "The New Donation Request as JSON",
+                        "required": true
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/DonationRequest"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "201": {
+                        "description": "New Donation is returned",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Donations"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "The request parameters are invalid",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "404": {
+                        "description": "A Donation component was not found with the input criteria",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "500": {
+                        "description": "An unplanned error occured",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/Beneficiary": {
+            "post": {
+                "tags": [
+                    "basic-create-beneficiary-controller"
+                ],
+                "summary": "Create a beneficiary",
+                "description": "Returns the created beneficiary",
+                "operationId": "createBeneficiary",
+                "parameters": [
+                    {
+                        "name": "Create Beneficiary Request",
+                        "in": "query",
+                        "description": "The New Beneficiary Request as JSON",
+                        "required": true
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/BeneficiaryRequest"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "201": {
+                        "description": "New Beneficiary is returned",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Beneficiary"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "The request parameters are invalid",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "404": {
+                        "description": "A Beneficiary component was not found with the input criteria",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "500": {
+                        "description": "An unplanned error occured",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/UtilityBills": {
+            "get": {
+                "tags": [
+                    "basic-utility-bills-controller"
+                ],
+                "summary": "Returns a list of Utility Bills",
+                "description": "Returns a list of Utility Bills given an optional Utility Type and/or Amount Due",
+                "operationId": "fetchUtilityBills",
+                "parameters": [
+                    {
+                        "name": "UtilityType",
+                        "in": "query",
+                        "description": "The Utility Type (i.e., 'electricity')"
+                    },
+                    {
+                        "name": "AmountDue",
+                        "in": "query",
+                        "description": "Amount Due (i.e., '75.00')"
+                    },
+                    {
+                        "name": "utilityType",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "water",
+                                "electricity",
+                                "natural_gas"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "amountDue",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "number"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "A list of Utility Bills is returned",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/UtilityBills"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "The request parameters are invalid",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "404": {
+                        "description": "No Utility Bills were found with the input criteria",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "500": {
+                        "description": "An unplanned error occured",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/FetchBeneficiary": {
+            "get": {
+                "tags": [
+                    "basic-fetch-beneficiary-controller"
+                ],
+                "summary": "Returns a list of Beneficiaries",
+                "description": "Returns a list of Beneficiaries given a Last Name",
+                "operationId": "fetchBeneficiaries",
+                "parameters": [
+                    {
+                        "name": "lastName",
+                        "in": "query",
+                        "description": "Last Name (i.e., 'Doe')",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "A list of Beneficiaries is returned",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Beneficiary"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "The request parameters are invalid",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "404": {
+                        "description": "No Beneficiaries were found with the input criteria",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "500": {
+                        "description": "An unplanned error occured",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/DeleteBeneficiary/{beneficiary_Id}": {
+            "delete": {
+                "tags": [
+                    "basic-delete-beneficiary-controller"
+                ],
+                "summary": "Delete a beneficiary",
+                "description": "Deletes the specified beneficiary",
+                "operationId": "deleteBeneficiary",
+                "parameters": [
+                    {
+                        "name": "beneficiary_Id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Beneficiary is successfully deleted",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "object",
+                                    "additionalProperties": {
+                                        "type": "object"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "A Beneficiary component was not found with the input criteria",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "500": {
+                        "description": "An unplanned error occurred",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "Beneficiary": {
+                "type": "object",
+                "properties": {
+                    "beneficiary_id": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "first_name": {
+                        "type": "string"
+                    },
+                    "last_name": {
+                        "type": "string"
+                    },
+                    "email": {
+                        "type": "string"
+                    },
+                    "password": {
+                        "type": "string"
+                    },
+                    "cell_phone": {
+                        "type": "string"
+                    }
+                }
+            },
+            "Donor": {
+                "type": "object",
+                "properties": {
+                    "donor_id": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "first_name": {
+                        "type": "string"
+                    },
+                    "last_name": {
+                        "type": "string"
+                    },
+                    "email": {
+                        "type": "string"
+                    },
+                    "password": {
+                        "type": "string"
+                    },
+                    "cell_phone": {
+                        "type": "string"
+                    }
+                }
+            },
+            "Payment": {
+                "type": "object",
+                "properties": {
+                    "payment_id": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "payment_date": {
+                        "type": "string",
+                        "format": "date"
+                    },
+                    "donor": {
+                        "$ref": "#/components/schemas/Donor"
+                    },
+                    "utilityBills": {
+                        "$ref": "#/components/schemas/UtilityBills"
+                    },
+                    "beneficiary": {
+                        "$ref": "#/components/schemas/Beneficiary"
+                    },
+                    "payment_type": {
+                        "type": "string",
+                        "enum": [
+                            "DIRECT",
+                            "DONATION_POOL"
+                        ]
+                    }
+                }
+            },
+            "UtilityBills": {
+                "type": "object",
+                "properties": {
+                    "billId": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "beneficiaryId": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "utilityType": {
+                        "type": "string",
+                        "enum": [
+                            "water",
+                            "electricity",
+                            "natural_gas"
+                        ]
+                    },
+                    "amountDue": {
+                        "type": "number"
+                    },
+                    "dueDate": {
+                        "type": "string",
+                        "format": "date"
+                    },
+                    "paid": {
+                        "type": "boolean"
+                    }
+                }
+            },
+            "PaymentRequest": {
+                "required": [
+                    "paymentType",
+                    "payment_date"
+                ],
+                "type": "object",
+                "properties": {
+                    "payment_date": {
+                        "type": "string",
+                        "format": "date"
+                    },
+                    "donor_id": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "bill_id": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "beneficiary_id": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "paymentType": {
+                        "type": "string",
+                        "enum": [
+                            "DIRECT",
+                            "DONATION_POOL"
+                        ]
+                    }
+                }
+            },
+            "DonorRequest": {
+                "required": [
+                    "cell_phone",
+                    "email",
+                    "first_name",
+                    "last_name",
+                    "password"
+                ],
+                "type": "object",
+                "properties": {
+                    "first_name": {
+                        "pattern": "[\\w\\s]*",
+                        "type": "string"
+                    },
+                    "last_name": {
+                        "pattern": "[\\w\\s]*",
+                        "type": "string"
+                    },
+                    "email": {
+                        "type": "string"
+                    },
+                    "password": {
+                        "pattern": "[\\w\\s]*",
+                        "type": "string"
+                    },
+                    "cell_phone": {
+                        "pattern": "[\\w\\s]*",
+                        "type": "string"
+                    }
+                }
+            },
+            "Donations": {
+                "type": "object",
+                "properties": {
+                    "donationId": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "donor": {
+                        "$ref": "#/components/schemas/Donor"
+                    },
+                    "amountDonated": {
+                        "type": "number"
+                    },
+                    "donationDate": {
+                        "type": "string",
+                        "format": "date"
+                    }
+                }
+            },
+            "DonationRequest": {
+                "required": [
+                    "amountDonated",
+                    "donationDate",
+                    "donor_id"
+                ],
+                "type": "object",
+                "properties": {
+                    "donor_id": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "amountDonated": {
+                        "minimum": 0,
+                        "exclusiveMinimum": true,
+                        "type": "number"
+                    },
+                    "donationDate": {
+                        "type": "string",
+                        "format": "date"
+                    }
+                }
+            },
+            "BeneficiaryRequest": {
+                "required": [
+                    "cell_phone",
+                    "email",
+                    "first_name",
+                    "last_name",
+                    "password"
+                ],
+                "type": "object",
+                "properties": {
+                    "first_name": {
+                        "pattern": "[\\w\\s]*",
+                        "type": "string"
+                    },
+                    "last_name": {
+                        "pattern": "[\\w\\s]*",
+                        "type": "string"
+                    },
+                    "email": {
+                        "pattern": "[\\w\\s]*",
+                        "type": "string"
+                    },
+                    "password": {
+                        "pattern": "[\\w\\s]*",
+                        "type": "string"
+                    },
+                    "cell_phone": {
+                        "pattern": "[\\w\\s]*",
+                        "type": "string"
+                    }
+                }
+            }
+        }
+    }
+}
