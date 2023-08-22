@@ -2,6 +2,7 @@ package com.project.utilityBills.entity;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 import lombok.Builder;
 import lombok.Data;
 
@@ -10,6 +11,7 @@ import lombok.Data;
 public class DonorRequest {
   
   @NotNull
+  @Size(max = 25)
   @Pattern (regexp ="[\\w\\s]*")
   private String first_name;
   
@@ -20,7 +22,6 @@ public class DonorRequest {
   
   
   @NotNull
-  
   private String email;
   
   

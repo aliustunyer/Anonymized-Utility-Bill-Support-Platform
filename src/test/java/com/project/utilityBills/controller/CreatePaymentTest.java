@@ -36,7 +36,7 @@ class CreatePaymentTest extends CreatePaymentTestSupport {
   @Autowired
   private PaymentsDao paymentsDao;
   @Test
-  void testCreatePaymentReturnsSuccess201() {
+  void testCreatePaymentReturnsSuccess201andUtilityBillisPaid() {
    // Given an payment as JSON
     String body = createPaymentBody();
     String uri = getBaseUriForPayments();

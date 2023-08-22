@@ -45,6 +45,7 @@ public class BasicFetchBeneficiaryDao implements FetchBeneficiaryDao {
       public Beneficiary mapRow(ResultSet rs, int rowNum) throws SQLException {
         //formatter:on
         return Beneficiary.builder()
+            .beneficiary_id(rs.getInt("beneficiary_id"))
             .first_name(rs.getString("first_name"))
             .last_name(rs.getString("last_name"))
             .email(rs.getString("email"))

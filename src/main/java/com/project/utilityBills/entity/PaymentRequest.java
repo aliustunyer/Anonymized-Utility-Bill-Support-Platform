@@ -24,7 +24,6 @@ public class PaymentRequest {
   private int beneficiary_id;
   
   @NotNull
-  
   private PaymentType paymentType;
   
 

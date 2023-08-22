@@ -132,15 +132,14 @@ public Optional<Donor> fetchDonor(int donor_id) {
            
          SqlParams params = 
              generateInsertSql(payment_date, donor, beneficiary, utilityBills, paymentType);
-         
-         
-        
-         // Updates the utilityBill as paid in the utilityBills Table
-         updateUtilityBillAsPaid (utilityBills);
-         
+     
          KeyHolder keyHolder = new GeneratedKeyHolder();
          jdbcTemplate.update(params.sql, params.source, keyHolder);
          int paymentId = Objects.requireNonNull(keyHolder.getKey()).intValue();
+         
+         // Updates the utilityBill as paid in the utilityBills Table
+         updateUtilityBillAsPaid (utilityBills);
+         
          //formatter : off
          
          return Payment.builder()

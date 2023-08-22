@@ -25,11 +25,11 @@ public class BasicCreateBeneficiaryDao implements CreateBeneficiaryDao {
       
       KeyHolder keyHolder = new GeneratedKeyHolder();
       jdbcTemplate.update(params.sql, params.source, keyHolder);
-      int donorId = Objects.requireNonNull(keyHolder.getKey()).intValue();
+      int beneficiary_id = Objects.requireNonNull(keyHolder.getKey()).intValue();
       
       //formatter : off
       return Beneficiary.builder()
-          .beneficiary_id(donorId)
+          .beneficiary_id(beneficiary_id)
           .first_name(first_name)
           .last_name(last_name)
           .email (email)
